@@ -7,13 +7,13 @@ conf = SparkConf().setMaster("local").setAppName("uber-date-trips")
 sc = SparkContext(conf=conf)
 
 # 우리가 가져올 데이터가 있는 파일
-directory = "/Users/keon/fastcampus/data-engineering/01-spark/data"
+directory = "/Users/nhn/PycharmProjects/data-engineering/data"
 filename = "fhvhv_tripdata_2020-03.csv"
 
 # 데이터 파싱
 lines = sc.textFile(f"file:///{directory}/{filename}")
-header = lines.first() 
-filtered_lines = lines.filter(lambda row:row != header) 
+header = lines.first()
+filtered_lines = lines.filter(lambda row: row != header)
 
 # 필요한 부분만 골라내서 세는 부분
 # countByValue로 같은 날짜등장하는 부분을 센다
